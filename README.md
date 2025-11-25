@@ -4,7 +4,7 @@
 
 ### 1.1. Modelo de datos (ya definido)
 
-```json
+```text
 🧱 Tabla: cursos
 	•	id        BIGSERIAL      (PK)
 	•	titulo    VARCHAR(255)   NOT NULL
@@ -118,7 +118,7 @@ El campo **alumnos_matriculados** se podrá calcular más adelante cuando tengas
 
 **Endpoint:**
 
-```json
+```text
 POST /cursos
 ```
 

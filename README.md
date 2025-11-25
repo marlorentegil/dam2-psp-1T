@@ -105,12 +105,8 @@ GET /cursos/{id}
 }
 ```
 
-<aside>
-🚨
+> 🚨 El campo **alumnos_matriculados** se podrá calcular más adelante cuando tengas el recurso de Alumnos implementado. Si no llegas, puedes devolver temporalmente null o 0, pero es recomendable dejarlo preparado.
 
-El campo **alumnos_matriculados** se podrá calcular más adelante cuando tengas el recurso de Alumnos implementado. Si no llegas, puedes devolver temporalmente null o 0, pero es recomendable dejarlo preparado.
-
-</aside>
 
 ---
 
@@ -144,12 +140,8 @@ Estas validaciones deben estar implementadas con **Jakarta Bean Validation** en 
 | duracion_en_minutos | No | Si viene informado: como mínimo 30, como máximo 6000 |
 | precio | No | Si viene informado: no puede ser negativo. |
 
-<aside>
-👀
+> **Ojo al nombre JSON: el atributo del body se llama `duracion_en_minutos` y en Java usarás probablemente `duracionEnMinutos`. Tendrás que usar las anotaciones de Jackson para mapearlo correctamente.**
 
-Ojo al nombre JSON: el atributo del body se llama `duracion_en_minutos` y en Java usarás probablemente `duracionEnMinutos`. Tendrás que usar las anotaciones de Jackson para mapearlo correctamente.
-
-</aside>
 
 **Restricción extra de negocio**
 
@@ -221,14 +213,8 @@ Tabla: alumnos
 - curso_id   BIGINT         NOT NULL (FK → cursos.id)
 ```
 
-<aside>
-🚨
 
-**Ayuda** En Java deberás crear algo como AlumnoEntity, con una relación hacia CursoEntity (@ManyToOne o similar).
-
-</aside>
-
----
+> 🚨**Ayuda** En Java deberás crear algo como AlumnoEntity, con una relación hacia CursoEntity (@ManyToOne o similar).
 
 ### 2.2. Listado de alumnos de un curso
 

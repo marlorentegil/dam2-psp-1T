@@ -4,6 +4,4 @@ public record CursoResumenResponse(
         Long id,
         String titulo,
         String categoria
-) {
-
-}
+) { }

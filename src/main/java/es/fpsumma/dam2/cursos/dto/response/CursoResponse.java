@@ -8,7 +8,6 @@ public record CursoResponse(
         String categoria,
         @JsonProperty("duracion_en_minutos")
         Integer duracionEnMinutos,
-        Integer alumnosMatriculados,
-        String precio) {
-
-}
+        Double precio,
+        Integer alumnosMatriculados
+) { }

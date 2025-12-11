@@ -7,8 +7,11 @@ public record CursoRequest(
         @Size(min = 1, max = 255)
         String titulo,
 
+        @Size(min = 1, max = 100)
         String categoria,
 
         Integer duracionEnMinutos,
-        Double precio) {
-}
+
+        @Size(min = 2, max = 10)
+        Double precio
+) { }

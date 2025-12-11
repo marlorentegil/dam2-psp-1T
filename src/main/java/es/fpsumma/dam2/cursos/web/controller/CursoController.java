@@ -6,6 +6,7 @@ import es.fpsumma.dam2.cursos.dto.response.CursoResumenResponse;
 import es.fpsumma.dam2.cursos.service.CursoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,9 +22,11 @@ public class CursoController {
         this.cursoService = cursoService;
     }
 
-    public List<CursoResumenResponse> getCursos(@RequestParam(defaultValue = "id") String ordenarPor,
-                                                String direccion) {
-        return null;
+    @GetMapping("/cursos")
+    @ResponseStatus(HttpStatus.OK)
+    public List<CursoResumenResponse> getCursos(@RequestParam(required = false, defaultValue = "id") String ordenarPor,
+                                                @RequestParam(required = false, defaultValue = "asc") String direccion) {
+        return this.cursoService.listarCursos(ordenarPor, direccion);
     }
 
     public CursoResponse getCurso(@PathVariable Long id) {

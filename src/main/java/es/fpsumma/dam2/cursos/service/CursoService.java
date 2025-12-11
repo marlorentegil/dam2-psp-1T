@@ -1,5 +1,6 @@
 package es.fpsumma.dam2.cursos.service;
 
+import es.fpsumma.dam2.cursos.dto.request.CursoRequest;
 import es.fpsumma.dam2.cursos.dto.response.CursoResponse;
 import es.fpsumma.dam2.cursos.dto.response.CursoResumenResponse;
 
@@ -12,5 +13,9 @@ public interface CursoService {
 
     CursoResponse getCurso(Long id);
 
+    CursoResponse actualizarCurso(Long id, CursoRequest request);
 
+    CursoResponse crearCurso(CursoRequest request);
+
+    void eliminarCurso(Long id);
 }

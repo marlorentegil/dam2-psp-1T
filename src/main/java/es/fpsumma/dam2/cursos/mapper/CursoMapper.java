@@ -1,5 +1,6 @@
 package es.fpsumma.dam2.cursos.mapper;
 
+import es.fpsumma.dam2.cursos.dto.request.CursoRequest;
 import es.fpsumma.dam2.cursos.dto.response.CursoResponse;
 import es.fpsumma.dam2.cursos.dto.response.CursoResumenResponse;
 import es.fpsumma.dam2.cursos.persistence.jpa.entity.CursoEntity;
@@ -14,17 +15,27 @@ public class CursoMapper {
         );
     }
 
-        public static CursoResponse cursoEntityToCursoResponse(CursoEntity e, Integer alumnosMatriculados) {
+    public static CursoResponse cursoEntityToCursoResponse(CursoEntity e, Integer alumnosMatriculados) {
 
-            String precio = e.getPrecio() == null ? null : e.getPrecio() + "€"; //hay que pasarlo a Double, está en String
+        return new CursoResponse(
+                e.getId(),
+                e.getTitulo(),
+                e.getCategoria(),
+                e.getDuracionEnMinutos(),
+                e.getPrecio(),
+                alumnosMatriculados
+        );
+    }
 
-            return new CursoResponse(
-                    e.getId(),
-                    e.getTitulo(),
-                    e.getCategoria(),
-                    e.getDuracionEnMinutos(),
-                    precio, //e.getPrecio() -> si no hacemos la operación de arriba
-                    alumnosMatriculados
-            );
-        }
+    public static CursoEntity cursoRequestToCursoEntity(CursoRequest request) {
+        return new CursoEntity(
+                null,
+                request.titulo(),
+                request.categoria(),
+                request.duracionEnMinutos(),
+                request.precio()
+        );
+    }
+
+
 }

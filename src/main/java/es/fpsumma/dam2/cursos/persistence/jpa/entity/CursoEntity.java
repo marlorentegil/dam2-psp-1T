@@ -28,7 +28,7 @@ public class CursoEntity {
     public CursoEntity() {
     }
 
-    public CursoEntity(Long id, String titulo, String categoria, Integer duracionEnMinutos, Double precio, AlumnosEntity alumnosEntity) {
+    public CursoEntity(Long id, String titulo, String categoria, Integer duracionEnMinutos, Double precio) {
         this.id = id;
         this.titulo = titulo;
         this.categoria = categoria;

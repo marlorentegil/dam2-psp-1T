@@ -29,12 +29,29 @@ public class CursoController {
         return this.cursoService.listarCursos(ordenarPor, direccion);
     }
 
+    @GetMapping("/cursos/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public CursoResponse getCurso(@PathVariable Long id) {
-        return null;
+        return this.cursoService.getCurso(id);
     }
 
+    @GetMapping("/cursos")
+    @ResponseStatus(HttpStatus.CREATED)
     public CursoResponse crearCurso(@Valid @RequestBody CursoRequest request) {
-        return null;
+        return this.cursoService.crearCurso(request);
+
+    }
+
+    @PutMapping("/cursos/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CursoResponse actualizarCurso(@PathVariable Long id, CursoRequest request) {
+        return this.cursoService.actualizarCurso(id, request);
+    }
+
+    @DeleteMapping("/cursos/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void eliminarCurso(@PathVariable Long id){
+        this.cursoService.eliminarCurso(id);
     }
 
 }

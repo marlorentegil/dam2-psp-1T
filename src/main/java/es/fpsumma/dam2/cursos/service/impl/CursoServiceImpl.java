@@ -39,25 +39,40 @@ public class CursoServiceImpl implements CursoService {
         try{
             CursoEntity cursoEntity = this.cursoRepository.getReferenceById(id);
             Integer alumnosMatriculados = this.alumnoRepository.countByCursoEntityId(id);
-            return CursoMapper.cursoEntityToCursoResumenResponse(cursoEntity, alumnosMatriculados);
+            return CursoMapper.cursoEntityToCursoResponse(cursoEntity, alumnosMatriculados);
         }catch(EntityNotFoundException e){
             throw new CursoNoEncontradoException("Curso no encontrado");
         }
     }
 
     @Override
-    public CursoResponse actualizarCurso(Long id, CursoRequest curso) {
-        return null;
+    public CursoResponse crearCurso(CursoRequest request) {
+        CursoEntity curso = CursoMapper.cursoRequestToCursoEntity(request);
+        CursoEntity result = this.cursoRepository.save(curso);
+        return CursoMapper.cursoEntityToCursoResponse(result, 0);
     }
 
     @Override
-    public CursoResponse crearCurso(CursoRequest curso) {
-        return null;
+    public CursoResponse actualizarCurso(Long id, CursoRequest request) {
+        try{
+            CursoEntity cursoEntity = CursoMapper.cursoRequestToCursoEntity(request);
+            cursoEntity.setId(id);
+            CursoEntity result = this.cursoRepository.save(cursoEntity);
+            return CursoMapper.cursoEntityToCursoResponse(result, 0);
+        }catch (CursoNoEncontradoException e){
+            throw new CursoNoEncontradoException("Curso no encontrado");
+        }
     }
+
+
 
     @Override
     public void eliminarCurso(Long id) {
-
+        try{
+            this.cursoRepository.deleteById(id);
+        }catch (EntityNotFoundException e){
+            throw new CursoNoEncontradoException("Curso no encontrado");
+        }
     }
 
 
